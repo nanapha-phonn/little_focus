@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff0f3">
+    <meta name="description" content="A little Chiikawa-inspired space to focus, rest, and repeat.">
+
+    <title>Little Focus ♡ Chiikawa Edition</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/app.js"></script>
+</head>
+
+<body class="study-mode">
+
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="ambient ambient-three" aria-hidden="true"></div>
+
+    <div class="floating-decor decor-heart" aria-hidden="true">♡</div>
+    <div class="floating-decor decor-star" aria-hidden="true">✦</div>
+    <div class="floating-decor decor-flower" aria-hidden="true">✿</div>
+    <div class="floating-decor decor-sparkle" aria-hidden="true">✧</div>
+
+    <main class="desktop-shell">
+
+        <!-- HEADER -->
+        <header class="app-header">
+
+            <a class="brand" href="#" aria-label="Little Focus home">
+                <span class="brand-mark">♡</span>
+
+                <span>
+                    <strong>little focus</strong>
+                    <small>a little space for you</small>
+                </span>
+            </a>
+
+            <div class="header-right">
+                <span class="status-chip">
+                    <span class="status-dot"></span>
+                    YOUR COZY WORKSPACE
+                </span>
+
+                <span class="header-date" id="todayLabel">Today</span>
+            </div>
+
+        </header>
+
+        <!-- MAIN WORKSPACE -->
+        <section class="workspace" aria-label="Little Focus workspace">
+
+            <!-- LEFT PANEL -->
+            <aside class="side-panel">
+
+                <div class="side-intro">
+                    <span class="eyebrow">YOUR LITTLE CORNER</span>
+
+                    <h2>One thing<br>at a time.</h2>
+
+                    <p>Small steps still move you forward. ♡</p>
+                </div>
+
+                <div class="side-note">
+                    <span class="note-icon">✿</span>
+
+                    <div>
+                        <strong>Gentle reminder</strong>
+                        <p>You don't have to do everything today.</p>
+                    </div>
+                </div>
+
+                <div class="side-footer">
+                    <span class="side-footer-heart">♡</span>
+                    <span>FOCUS • REST • REPEAT</span>
+                </div>
+
+            </aside>
+
+            <!-- TIMER CARD -->
+            <section class="timer-card" aria-label="Pomodoro timer">
+
+                <div class="card-topline">
+
+                    <div class="mode-indicator">
+                        <span class="mode-dot"></span>
+                        <span id="modeLabel">♡ FOCUS TIME ♡</span>
+                    </div>
+
+                    <span class="session-tag">LITTLE BY LITTLE</span>
+
+                </div>
+
+                <div class="timer-heading">
+                    <h1 id="modeTitle">Let's study together!</h1>
+
+                    <p id="modeDescription">
+                        You can do it! One step at a time ♡
+                    </p>
+                </div>
+
+                <!-- CHIIKAWA GIFS -->
+                <div class="image-container">
+
+                    <div id="focusGif" class="chiikawa-gif active">
+
+                        <div
+                            class="tenor-gif-embed"
+                            data-postid="13754976105773820303"
+                            data-share-method="host"
+                            data-aspect-ratio="1"
+                            data-width="100%"
+                        >
+                            <a href="https://tenor.com/view/chiikawacutiepie-chiikawa-study-chiikawa-sing-chiikawa-music-chiikawa-disturb-gif-13754976105773820303">
+                                Chiikawa Study
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div id="playGif" class="chiikawa-gif">
+
+                        <div
+                            class="tenor-gif-embed"
+                            data-postid="9974438153675837610"
+                            data-share-method="host"
+                            data-aspect-ratio="0.920502"
+                            data-width="100%"
+                        >
+                            <a href="https://tenor.com/view/scarseven-gif-9974438153675837610">
+                                Chiikawa Play Time
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- TIMER -->
+                <div class="timer-display" aria-live="off">
+                    <span id="timer">25:00</span>
+                </div>
+
+                <p
+                    id="timerStatus"
+                    class="timer-status"
+                    role="status"
+                >
+                    Ready when you are ♡
+                </p>
+
+                <!-- TIMER CONTROLS -->
+                <div class="playback-controls">
+
+                    <button
+                        id="startBtn"
+                        class="control-btn primary-btn"
+                        type="button"
+                    >
+                        ▶ Start
+                    </button>
+
+                    <button
+                        id="pauseBtn"
+                        class="control-btn secondary-btn"
+                        type="button"
+                        disabled
+                    >
+                        Ⅱ Pause
+                    </button>
+
+                    <button
+                        id="resetBtn"
+                        class="control-btn reset-btn"
+                        type="button"
+                        aria-label="Reset timer"
+                        title="Reset timer"
+                    >
+                        ↻
+                    </button>
+
+                </div>
+
+                <!-- MODE SWITCHER -->
+                <div class="mode-switcher" aria-label="Timer mode">
+
+                    <button
+                        id="studyModeBtn"
+                        class="mode-btn active"
+                        type="button"
+                        aria-pressed="true"
+                    >
+                        ♡ Focus
+                    </button>
+
+                    <button
+                        id="restModeBtn"
+                        class="mode-btn"
+                        type="button"
+                        aria-pressed="false"
+                    >
+                        ☆ Play Time
+                    </button>
+
+                </div>
+
+                <!-- DURATION SETTINGS -->
+                <div class="duration-settings">
+
+                    <label class="duration-group" for="studyDuration">
+
+                        <span>Focus duration</span>
+
+                        <span class="input-wrapper">
+                            <input
+                                type="number"
+                                id="studyDuration"
+                                min="1"
+                                max="180"
+                                value="25"
+                                inputmode="numeric"
+                            >
+
+                            <span>min</span>
+                        </span>
+
+                    </label>
+
+                    <label class="duration-group" for="restDuration">
+
+                        <span>Play duration</span>
+
+                        <span class="input-wrapper">
+                            <input
+                                type="number"
+                                id="restDuration"
+                                min="1"
+                                max="60"
+                                value="5"
+                                inputmode="numeric"
+                            >
+
+                            <span>min</span>
+                        </span>
+
+                    </label>
+
+                </div>
+
+                <!-- STAGE 4: SOUND SETTINGS -->
+                <section class="sound-settings" aria-labelledby="soundSettingsTitle">
+
+                    <div class="sound-heading">
+                        <h3 id="soundSettingsTitle">♡ Sound Settings</h3>
+
+                        <label class="sound-toggle">
+                            <input type="checkbox" id="soundEnabled">
+                            <span>Enabled</span>
+                        </label>
+                    </div>
+
+                    <label class="volume-control" for="soundVolume">
+                        <span>Volume</span>
+                        <span id="volumeValue">70%</span>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="soundVolume"
+                        min="0"
+                        max="100"
+                        value="70"
+                    >
+
+                    <div class="sound-choice">
+                        <label for="focusSound">Focus completion</label>
+
+                        <div class="sound-choice-controls">
+                            <select id="focusSound">
+                                <option value="chime">Soft Chime</option>
+                                <option value="sparkle">Magic Sparkle</option>
+                                <option value="gentle">Gentle Melody</option>
+                            </select>
+
+                            <button type="button" class="preview-sound-btn" id="previewFocusSound">
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sound-choice">
+                        <label for="breakSound">Play Time completion</label>
+
+                        <div class="sound-choice-controls">
+                            <select id="breakSound">
+                                <option value="gentle">Gentle Melody</option>
+                                <option value="chime">Soft Chime</option>
+                                <option value="sparkle">Magic Sparkle</option>
+                            </select>
+
+                            <button type="button" class="preview-sound-btn" id="previewBreakSound">
+                                Preview
+                            </button>
+                        </div>
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!-- RIGHT PANEL -->
+            <aside class="right-panel">
+
+                <!-- TODAY'S PROGRESS -->
+                <section class="today-card">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <span class="eyebrow">A LITTLE PROGRESS</span>
+                            <h2>Today's focus</h2>
+                        </div>
+
+                        <span class="panel-heart">♡</span>
+
+                    </div>
+
+                    <div class="daily-count">
+                        <strong id="sessionCount">0</strong>
+                        <span>/ 5 sessions</span>
+                    </div>
+
+                    <div
+                        class="progress-track"
+                        role="progressbar"
+                        aria-label="Daily focus goal"
+                        aria-valuemin="0"
+                        aria-valuemax="5"
+                        aria-valuenow="0"
+                        id="progressBar"
+                    >
+                        <span id="progressFill"></span>
+                    </div>
+
+                    <div
+                        class="progress-hearts"
+                        id="progressHearts"
+                        aria-label="Daily goal progress"
+                    >
+                        <span>♡</span>
+                        <span>♡</span>
+                        <span>♡</span>
+                        <span>♡</span>
+                        <span>♡</span>
+                    </div>
+
+                    <p
+                        class="progress-message"
+                        id="progressMessage"
+                    >
+                        Let's complete our first session!
+                    </p>
+
+                </section>
+
+                <!-- QUICK STATISTICS -->
+                <section class="quick-stats-card">
+
+                    <span class="eyebrow">YOUR LITTLE WINS</span>
+
+                    <div class="quick-stat">
+
+                        <span class="stat-icon">◷</span>
+
+                        <div>
+                            <strong id="todayMinutes">0 min</strong>
+                            <small>Focus time today</small>
+                        </div>
+
+                    </div>
+
+                    <div class="quick-stat">
+
+                        <span class="stat-icon">♡</span>
+
+                        <div>
+                            <strong id="allTimeSessions">0</strong>
+                            <small>Completed focus sessions</small>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <p class="privacy-note">
+                    <span>✧</span>
+                    Your progress is saved on this device.
+                </p>
+
+            </aside>
+
+        </section>
+
+        <!-- STAGE 2: PERSISTENT STATISTICS -->
+        <section
+            class="statistics-section"
+            aria-label="Focus statistics"
+        >
+
+            <div class="statistics-heading">
+                <span class="eyebrow">YOUR LITTLE JOURNEY</span>
+                <h2>Every little step counts ♡</h2>
+            </div>
+
+            <!-- STATISTICS CARDS -->
+            <div class="statistics-grid">
+
+                <article class="stat-card">
+
+                    <span class="stat-card-label">
+                        Total Focus Time
+                    </span>
+
+                    <strong
+                        class="stat-card-value"
+                        id="totalFocusTime"
+                    >
+                        0 min
+                    </strong>
+
+                    <span class="stat-card-description">
+                        Time spent focusing since you started.
+                    </span>
+
+                </article>
+
+                <article class="stat-card">
+
+                    <span class="stat-card-label">
+                        Productive Days
+                    </span>
+
+                    <strong
+                        class="stat-card-value"
+                        id="productiveDays"
+                    >
+                        0
+                    </strong>
+
+                    <span class="stat-card-description">
+                        Days with at least one completed Focus session.
+                    </span>
+
+                </article>
+
+                <article class="stat-card">
+
+                    <span class="stat-card-label">
+                        Average Session
+                    </span>
+
+                    <strong
+                        class="stat-card-value"
+                        id="averageFocusTime"
+                    >
+                        0 min
+                    </strong>
+
+                    <span class="stat-card-description">
+                        Average duration of completed sessions.
+                    </span>
+
+                </article>
+
+            </div>
+
+            <!-- WEEKLY STATISTICS -->
+            <article class="weekly-card">
+
+                <div class="weekly-card-header">
+
+                    <div>
+                        <span class="eyebrow">YOUR WEEKLY PROGRESS</span>
+                        <h3>This Week</h3>
+                    </div>
+
+                    <span
+                        class="weekly-summary"
+                        id="weeklySummary"
+                    >
+                        0 sessions · 0 min
+                    </span>
+
+                </div>
+
+                <div
+                    class="weekly-chart"
+                    id="weeklyChart"
+                    aria-label="Weekly focus activity"
+                >
+
+                    <!-- Populated by app.js -->
+
+                </div>
+
+            </article>
+
+            <!-- ========================================
+                 STAGE 3: DAILY CALENDAR
+            ======================================== -->
+
+            <section class="calendar-section" aria-label="Focus calendar">
+
+                <div class="calendar-heading">
+                    <span class="eyebrow">YOUR LITTLE MEMORIES</span>
+
+                    <h2>Every day is a little achievement ♡</h2>
+
+                    <p>Look back at all the little steps you've taken.</p>
+                </div>
+
+                <div class="calendar-layout">
+
+                    <!-- MONTHLY CALENDAR -->
+
+                    <article class="calendar-card">
+
+                        <div class="calendar-header">
+
+                            <button
+                                id="previousMonthBtn"
+                                class="calendar-nav-btn"
+                                type="button"
+                                aria-label="Previous month"
+                            >
+                                ‹
+                            </button>
+
+                            <h3 id="calendarMonth"></h3>
+
+                            <button
+                                id="nextMonthBtn"
+                                class="calendar-nav-btn"
+                                type="button"
+                                aria-label="Next month"
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+                        <div class="calendar-weekdays">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+                        <div
+                            class="calendar-grid"
+                            id="calendarGrid"
+                            aria-label="Monthly focus calendar"
+                        ></div>
+
+                        <div class="calendar-legend">
+
+                            <span>
+                                <i class="legend-today"></i>
+                                Today
+                            </span>
+
+                            <span>
+                                <i class="legend-completed"></i>
+                                Completed Focus session
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <!-- DAILY SESSION HISTORY -->
+
+                    <article class="history-card">
+
+                        <div class="history-header">
+
+                            <span class="eyebrow">YOUR DAILY JOURNEY</span>
+
+                            <h3 id="historyDate">Today</h3>
+
+                            <p id="historySummary">
+                                0 completed sessions · 0 min
+                            </p>
+
+                        </div>
+
+                        <div
+                            class="history-list"
+                            id="historyList"
+                        ></div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+
+            <p>Made with ♡ for your little dreams.</p>
+
+            <span>LITTLE FOCUS · CHIIKAWA EDITION</span>
+
+        </footer>
+
+    </main>
+
+    <script async src="https://tenor.com/embed.js"></script>
+
+</body>
+</html>
